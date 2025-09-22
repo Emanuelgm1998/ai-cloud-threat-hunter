@@ -1,81 +1,17 @@
 # AI Cloud Threat Hunter Report
 
-- Generated at: `2025-09-22T05:53:33.041289`
+- Generated at: `2025-09-22T05:55:30.859427`
 - Window (s): `300`  |  Threshold: `2`
 
 ## Totals
-- Lines processed: **41**
-- Events parsed: **41**
-- Alerts: **78**
+- Lines processed: **57**
+- Events parsed: **57**
+- Alerts: **110**
 
 ## Top IPs
-- `127.0.0.1` → 41 events
+- `127.0.0.1` → 57 events
 
 ## Recent Alerts
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:09.797163
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=19.0
-  - 14 403s in 300s @ 2025-09-22T05:52:09.797209
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:10.029621
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=20.0
-  - 15 403s in 300s @ 2025-09-22T05:52:10.029650
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:10.230025
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=21.0
-  - 16 403s in 300s @ 2025-09-22T05:52:10.230056
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:10.430351
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=22.0
-  - 17 403s in 300s @ 2025-09-22T05:52:10.430370
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:10.630924
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=23.0
-  - 18 403s in 300s @ 2025-09-22T05:52:10.630973
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/.env @ 2025-09-22T05:52:10.831410
-- **MEDIUM** | `404_storm` | ip=`127.0.0.1` | score=8.0
-  - 3 404s in 300s @ 2025-09-22T05:52:10.831438
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/wp-login.php @ 2025-09-22T05:52:10.831864
-- **MEDIUM** | `404_storm` | ip=`127.0.0.1` | score=9.0
-  - 4 404s in 300s @ 2025-09-22T05:52:10.831877
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:42.582825
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=24.0
-  - 19 403s in 300s @ 2025-09-22T05:52:42.582857
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:42.783915
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=25.0
-  - 20 403s in 300s @ 2025-09-22T05:52:42.783943
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:42.984327
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=26.0
-  - 21 403s in 300s @ 2025-09-22T05:52:42.984360
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:43.184783
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=27.0
-  - 22 403s in 300s @ 2025-09-22T05:52:43.184810
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:43.395464
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=28.0
-  - 23 403s in 300s @ 2025-09-22T05:52:43.395492
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:43.596063
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=29.0
-  - 24 403s in 300s @ 2025-09-22T05:52:43.596098
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:43.796823
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=30.0
-  - 25 403s in 300s @ 2025-09-22T05:52:43.796852
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:43.997150
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=31.0
-  - 26 403s in 300s @ 2025-09-22T05:52:43.997176
-- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
-  - path=/admin @ 2025-09-22T05:52:44.197449
-- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=32.0
-  - 27 403s in 300s @ 2025-09-22T05:52:44.197467
 - **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
   - path=/admin @ 2025-09-22T05:52:44.397828
 - **HIGH** | `403_storm` | ip=`127.0.0.1` | score=33.0
@@ -112,3 +48,67 @@
   - path=/admin @ 2025-09-22T05:53:33.041014
 - **HIGH** | `403_storm` | ip=`127.0.0.1` | score=39.0
   - 34 403s in 300s @ 2025-09-22T05:53:33.041039
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:33.242266
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=40.0
+  - 35 403s in 300s @ 2025-09-22T05:53:33.242297
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:33.442661
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=41.0
+  - 36 403s in 300s @ 2025-09-22T05:53:33.442684
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:33.643266
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=42.0
+  - 37 403s in 300s @ 2025-09-22T05:53:33.643306
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:33.852774
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=43.0
+  - 38 403s in 300s @ 2025-09-22T05:53:33.852799
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:34.053179
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=44.0
+  - 39 403s in 300s @ 2025-09-22T05:53:34.053211
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:34.253955
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=45.0
+  - 40 403s in 300s @ 2025-09-22T05:53:34.253984
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:34.454335
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=46.0
+  - 41 403s in 300s @ 2025-09-22T05:53:34.454370
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:34.856213
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=47.0
+  - 42 403s in 300s @ 2025-09-22T05:53:34.856258
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:35.059334
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=48.0
+  - 43 403s in 300s @ 2025-09-22T05:53:35.059364
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:35.260296
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=49.0
+  - 44 403s in 300s @ 2025-09-22T05:53:35.260327
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:35.460730
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=50.0
+  - 45 403s in 300s @ 2025-09-22T05:53:35.460757
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:35.661088
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=51.0
+  - 46 403s in 300s @ 2025-09-22T05:53:35.661116
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:35.861423
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=52.0
+  - 47 403s in 300s @ 2025-09-22T05:53:35.861448
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/admin @ 2025-09-22T05:53:36.061944
+- **HIGH** | `403_storm` | ip=`127.0.0.1` | score=53.0
+  - 48 403s in 300s @ 2025-09-22T05:53:36.061992
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/.env @ 2025-09-22T05:53:36.262722
+- **MEDIUM** | `404_storm` | ip=`127.0.0.1` | score=12.0
+  - 7 404s in 300s @ 2025-09-22T05:53:36.262750
+- **MEDIUM** | `suspicious_path` | ip=`127.0.0.1` | score=6.0
+  - path=/wp-login.php @ 2025-09-22T05:53:36.262828
+- **MEDIUM** | `404_storm` | ip=`127.0.0.1` | score=13.0
+  - 8 404s in 300s @ 2025-09-22T05:53:36.262837
