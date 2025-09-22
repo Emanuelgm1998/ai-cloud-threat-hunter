@@ -15,9 +15,9 @@
 ## 📌 Objetivos del proyecto
 
 * **Operar en minutos:** script **single-file** listo para correr en **Codespaces**, VMs o servidores.
-* **Detección útil de inmediato:** reglas para **fuerza bruta SSH**, **tormentas 403/404** y **rutas sospechosas**.
-* **Anomalías ligeras:** **EWMA + z-score** para detectar **picos de tasa** sin dependencias pesadas.
-* **Observabilidad mínima viable:** **dashboard en terminal** y **reportes exportables** para auditoría y análisis.
+* **Detección inmediata:** reglas para **fuerza bruta SSH**, **tormentas 403/404** y **rutas sospechosas**.
+* **Anomalías ligeras:** **EWMA + z-score** para detectar **picos de tasa** por IP sin dependencias pesadas.
+* **Observabilidad mínima viable:** **dashboard en terminal** y **reportes exportables** para auditoría.
 
 ---
 
@@ -25,38 +25,38 @@
 
 ```mermaid
 flowchart LR
-  subgraph Fuentes de Logs
-    N[Nginx access.log]
-    S[Syslog / SSHD]
+  subgraph "Fuentes de Logs"
+    N["Nginx access.log"]
+    S["Syslog / SSHD"]
   end
 
-  N -->|tail/replay| H[AI Cloud Threat Hunter (single-file)]
+  N -->|tail/replay| H["AI Cloud Threat Hunter<br/>(single-file)"]
   S -->|tail/replay| H
 
-  H --> R1[Reglas: 403/404 storms]
-  H --> R2[Reglas: rutas sospechosas]
-  H --> R3[Reglas: SSH brute force]
-  H --> A1[Anomalía de tasa (EWMA+z)]
+  H --> R1["Reglas: 403/404 storms"]
+  H --> R2["Reglas: rutas sospechosas"]
+  H --> R3["Reglas: SSH brute force"]
+  H --> A1["Anomalía de tasa (EWMA+z)"]
 
-  H --> D[Dashboard Terminal (Rich)]
-  H --> E1[Export JSON]
-  H --> E2[Export Markdown]
+  H --> D["Dashboard Terminal (Rich)"]
+  H --> E1["Export JSON"]
+  H --> E2["Export Markdown"]
 
-  subgraph CI/CD
-    GH[GitHub Actions]
+  subgraph "CI/CD"
+    GH["GitHub Actions"]
   end
-  GH --> |py_compile| H
+  GH -->|py_compile| H
 ```
 
-> **Nota:** El diseño prioriza **dependencias mínimas** (solo `rich` es opcional). No se realiza salida a red ni GeoIP.
+> **Nota:** Diseño con **dependencias mínimas** (solo `rich` es opcional). No hay salidas a red, ni GeoIP por defecto.
 
 ---
 
 ## 🧰 Tecnologías
 
 * **Python 3.9+** (stdlib).
-* **UI opcional:** [`rich`](https://pypi.org/project/rich/) para tablas y paneles.
-* **CI/CD:** GitHub Actions con compilación (`python -m py_compile`) para el **ticket verde**.
+* **UI opcional:** [`rich`](https://pypi.org/project/rich/) para tablas/paneles.
+* **CI/CD:** GitHub Actions con compilación (`python -m py_compile`) → **ticket verde**.
 * **Entornos:** GitHub Codespaces, Linux, macOS.
 
 ---
@@ -72,7 +72,7 @@ flowchart LR
 └─ .github/workflows/ci.yml      # CI: compile check
 ```
 
-> *Minimalista y mantenible. El valor está en el **single-file**.*
+> Minimalista y mantenible. El valor está en el **single-file**.
 
 ---
 
@@ -84,41 +84,41 @@ flowchart LR
 # (opcional) UI bonita
 pip install -r requirements.txt  # o: pip install rich
 
-# Nginx (ejemplo con replay)
+# Nginx (demo con replay)
 python ai_cloud_threat_hunter.py --log sample_access.log --format nginx --replay --speed 30 --threshold 2 --export-md report.md
 
-# Syslog / SSH (detección de fuerza bruta)
+# Syslog / SSH (detección fuerza bruta)
 python ai_cloud_threat_hunter.py --log /var/log/syslog --format syslog --window 300 --threshold 5 --export-json report.json
 ```
 
-**Atajos útiles:**
+**Atajos útiles**
 
-* `--replay` reproduce el archivo y luego **sigue** esperando nuevas líneas.
-* `--threshold` baja para ver alertas más rápido en demo.
-* `--export-md / --export-json` generan informes periódicos y al salir (**Ctrl+C**).
+* `--replay` reproduce desde el inicio y luego **sigue** esperando nuevas líneas.
+* `--threshold` bájalo para ver alertas más rápido en demo.
+* `--export-md` / `--export-json` generan informes periódicos y al salir (**Ctrl+C**).
 
 ---
 
 ## 🔎 Detecciones incluidas
 
-* **Brute force SSH (syslog):** múltiples `Failed password` desde la misma IP en una ventana `--window`.
-* **Tormentas 404/403 (Nginx):** ráfagas de códigos 4xx por IP → `404_storm` / `403_storm`.
+* **Brute force SSH (syslog):** secuencia de `Failed password` desde la misma IP en la ventana `--window`.
+* **Tormentas 404/403 (Nginx):** ráfagas por IP → `404_storm` / `403_storm`.
 * **Rutas sospechosas:** `/wp-login.php`, `/admin`, `/.env`, `/phpmyadmin`, etc.
 * **Anomalía de tasa (EWMA+z):** desviación significativa del ritmo esperado de solicitudes por IP.
 
-> Los **umbrales** y la **ventana** son configurables con `--threshold` y `--window`.
+> Umbrales/ventanas configurables con `--threshold` y `--window`.
 
 ---
 
 ## 🖥️ Dashboard y reportes
 
-* **Dashboard en terminal:** métricas clave (líneas, eventos, alertas, top IPs) + tabla de **últimas alertas**.
+* **Dashboard en terminal (Rich):** métricas (Lines, Events, Alerts, Top IPs) + tabla de **últimas alertas**.
 * **Reportes:**
 
-  * **Markdown (`.md`)** legible para auditorías.
-  * **JSON** para pipelines y correlación externa.
+  * **Markdown (`.md`)** legible para auditoría.
+  * **JSON** para integraciones/pipelines.
 
-**Ejemplo de ejecución con export:**
+**Ejemplo “all-in”:**
 
 ```bash
 python ai_cloud_threat_hunter.py \
@@ -129,13 +129,13 @@ python ai_cloud_threat_hunter.py \
 
 ---
 
-## 🧪 Pruebas rápidas (smoke tests)
+## 🧪 Smoke tests (rápidos)
 
 ```bash
 # 1) Compilación (sintaxis OK)
 python -m py_compile ai_cloud_threat_hunter.py
 
-# 2) Demo Nginx (alertas al vuelo)
+# 2) Demo Nginx (alertas inmediatas)
 python ai_cloud_threat_hunter.py --log sample_access.log --format nginx --replay --speed 30 --threshold 2 --export-md report.md
 
 # 3) Generar tráfico (otra terminal)
@@ -149,11 +149,29 @@ done
 
 ---
 
+## 🔧 Parámetros principales
+
+| Flag             | Descripción                                  | Default |
+| ---------------- | -------------------------------------------- | ------- |
+| `--log`          | Ruta del archivo de log                      | (req.)  |
+| `--format`       | `auto` \| `nginx` \| `syslog`                | `auto`  |
+| `--window`       | Ventana móvil (seg.) para detecciones        | `300`   |
+| `--threshold`    | Umbral para storms / brute force / anomalías | `5`     |
+| `--ewma-alpha`   | Suavizado del modelo de tasa                 | `0.3`   |
+| `--replay`       | Reproducir desde el inicio                   | `false` |
+| `--speed`        | Líneas/segundo en `--replay`                 | `25`    |
+| `--export-md`    | Ruta de salida Markdown                      | `None`  |
+| `--export-json`  | Ruta de salida JSON                          | `None`  |
+| `--export-every` | Intervalo de export (s)                      | `30`    |
+| `--refresh`      | Frecuencia de refresco del dashboard (s)     | `1.0`   |
+
+---
+
 ## 📈 Observabilidad mínima
 
-* **Top IPs por eventos** (pantalla principal).
+* **Top IPs por eventos.**
 * **Últimas alertas** con **severidad**, **tipo**, **detalle** y **score**.
-* **Historial** en Markdown/JSON para análisis.
+* **Historial** exportado en Markdown/JSON.
 
 ---
 
@@ -169,30 +187,11 @@ Pipeline en `.github/workflows/ci.yml`:
 
 ---
 
-## 🔧 Parámetros principales
-
-| Flag             | Descripción                                 | Default |
-| ---------------- | ------------------------------------------- | ------- |
-| `--log`          | Ruta del archivo de log                     | (req.)  |
-| `--format`       | `auto` \| `nginx` \| `syslog`               | `auto`  |
-| `--window`       | Ventana móvil (seg.) para detecciones       | `300`   |
-| `--threshold`    | Umbral para storms/brute force/anomalías    | `5`     |
-| `--ewma-alpha`   | Factor de suavizado del modelo de tasa      | `0.3`   |
-| `--replay`       | Reproducir desde el inicio                  | `false` |
-| `--speed`        | Líneas/segundo en `--replay`                | `25`    |
-| `--export-md`    | Ruta de salida Markdown                     | `None`  |
-| `--export-json`  | Ruta de salida JSON                         | `None`  |
-| `--export-every` | Intervalo de export (seg.)                  | `30`    |
-| `--refresh`      | Frecuencia de refresco del dashboard (seg.) | `1.0`   |
-
----
-
 ## 🛡️ Buenas prácticas y seguridad
 
-* Ejecutar con **permisos mínimos** (sólo lectura del log).
-* **No** enviar datos a internet por defecto.
-* **No** incluir secretos en el repo.
-* Si se habilita en producción: aislar entorno, forward de logs, rotaciones y WAF/IPS complementarios.
+* Ejecutar con **permisos mínimos** (solo lectura del log).
+* **No** subir secretos; usar `.env.example` y secrets de GitHub.
+* En producción: usuario sin privilegios, forward/rotación de logs, WAF/IPS complementarios.
 
 ---
 
@@ -227,5 +226,4 @@ Pipeline en `.github/workflows/ci.yml`:
 
 * LinkedIn: [https://www.linkedin.com/in/emanuel-gonzalez-michea/](https://www.linkedin.com/in/emanuel-gonzalez-michea/)
 
-
-¿Quieres que te lo deje **auto-generado** en tu repo ahora mismo con un bloque de comandos listo para pegar?
+---
