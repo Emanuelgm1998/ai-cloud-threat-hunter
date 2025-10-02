@@ -218,7 +218,7 @@ Pipeline en `.github/workflows/ci.yml`:
 
 **MIT** — libre uso en proyectos personales y empresariales.
 
----
+
 
 ## 👤 Autor
 
@@ -226,4 +226,4 @@ Pipeline en `.github/workflows/ci.yml`:
 
 * LinkedIn: [https://www.linkedin.com/in/emanuel-gonzalez-michea/](https://www.linkedin.com/in/emanuel-gonzalez-michea/)
 
----
+
