@@ -220,7 +220,7 @@ Pipeline en `.github/workflows/ci.yml`:
 
 
 
-## 👤 Autor
+##  Autor
 
 **© 2025 Emanuel**
 
